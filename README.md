@@ -1,4 +1,4 @@
-Puppet Module - Vmware Fusion
+Puppet Module - VMware Fusion
 =============================
 
 Puppet module to install VMware Fusion.
