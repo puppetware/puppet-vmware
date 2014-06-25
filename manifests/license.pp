@@ -12,8 +12,8 @@
 #
 class vmware_fusion::license {
   $version = $vmware_fusion::version
-  $key = $vmware_fusion::params::key
-  $companyName = $vmware_fusion::params::companyName
+  $key = $vmware_fusion::key
+  $companyName = $vmware_fusion::companyName
 
   if $key != '' {
     exec {'vmware-register-license':
