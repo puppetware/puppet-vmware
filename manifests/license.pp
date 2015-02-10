@@ -12,13 +12,14 @@
 #
 class vmware_fusion::license {
   $version = $vmware_fusion::version
-  $key = $vmware_fusion::params::key
-  $companyName = $vmware_fusion::params::companyName
+  $key = $vmware_fusion::key
+  $companyName = $vmware_fusion::companyName
 
   if $key != '' {
     exec {'vmware-register-license':
       command => "vmware-licenseTool enter ${key} '' '${companyName}' ${version} 'VMware Fusion for Mac OS' ''",
-      path => '/Applications/VMware Fusion.app/Contents/Library',
+      unless  => 'test -f /Library/Preferences/Vmware\ Fusion/license-fusion-*',
+      path    => ['/Applications/VMware Fusion.app/Contents/Library', '/bin', '/usr/bin', '/sbin', '/usr/sbin', '/usr/local/bin', '/usr/local/sbin'],
     }
   }
 }
